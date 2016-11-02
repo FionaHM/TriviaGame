@@ -23,24 +23,38 @@
 		
 	</div>
 
-
+	
 	<div class="hide-initially"></div>
-		<div id="timer" class="hide-initially">20 seconds</div>
-		<div id="question" class="hide-initially"></div>
-		<div id="options" class="hide-initially"></div>
+	<div class="row">
+		<div class="col-md-12 text-center"">
+			<div id="timer" class="hide-initially"><h2>20 seconds</h2></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<div id="question" class="hide-initially"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4 text-center"">
+			<div id="options" class="hide-initially"></div>
+		</div>
+		<div class="col-md-4"></div>	
+	</div>
+
 <!-- 
 		<div class="modal">
 			<div id="messages" class="modal"></div>
 		</div> -->
 
 	<!-- Modal content -->
-	<div class="modal modal-content">
-	  <div class="modal modal-header"">
-	<!--     <span class="modal" id="close">X</span> -->
-	    Something in here
+	<div class="modal">
+	  <div class="modal text-center modal-header">
+	       <h3 id="info-message-title">User Information</h3>
 	  </div>
 	  <div class="modal modal-body">
-	    <p class="modal modal-body" id="messages"></p>
+	    <p class="modal modal-content text-center" id="messages"></p>
 	    <button class="modal-buttons" id="yes" value="yes">YES</button>  <button class="modal-buttons" id="no" value="no">NO</button>
 	  </div>
 

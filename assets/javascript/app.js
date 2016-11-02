@@ -48,16 +48,17 @@ var gameData = {
 			var i = gameData.currentQuestion;  // the array ID of the current questions
 			var j = 1;
 			var buttonSelected = false;
+			gameData.answerSelected = false;
             $('.hide-initially').show();
     		$('.show-initially').hide();
 			// clear this options div between questions.
 			$('#options').empty();
 			// displays the current question
-			$('#question').html(gameData.questionData[i][j-1] + '<br>');
+			$('#question').html('<h3>' + gameData.questionData[i][j-1] + '</h3><br>');
 		    // display all the possible answers held in array questionData indices 1-4;
 			while (j < gameData.questionData[i].length-1){
 				var currentID = "option" + j;
-				var b = $('<input type="radio" class="radioButton" id=' + currentID + '  name="options" value=' + j + '>' + gameData.questionData[i][j] + '<br>');	 	 
+				var b = $('<input type="radio" class="radioButton" id=' + currentID + '  name="options" value=' + j + '><p>' + gameData.questionData[i][j] + '</p><br>');	 	 
 				var hashCurrentID = '#' + currentID;
 				$('#options').append(b);
 				j++;
@@ -69,9 +70,10 @@ var gameData = {
 			console.log(buttonSelected);
 				$('.radioButton').on('click', function(){
 					if(!buttonSelected){
-						gameData.selectOption();
+					
 						gameData.answerSelected = true;
 						buttonSelected = true;
+					    gameData.selectOption();
 					}
 				});
 				// if ( buttonSelected ){  // dont allow user to click any more options
@@ -98,7 +100,8 @@ var gameData = {
 	   	},
 
 	   	goNoGoDecision: function(){
-	   		$('#messages').html('Would you like to restart the quiz?');
+	   	    $('#info-message-title').html('Game Over!');
+	   		$('#messages').html('<p>Would you like to restart the quiz?</p>');
 	   		$('.modal-buttons').show();
 	   		var clickedVal = null;
 		   	$('#yes').on('click', function() {
@@ -110,7 +113,7 @@ var gameData = {
             $('#no').on('click', function() {
             	if ( clickedVal === null ) {  // don't allow the buttons to be selected more than once
             		clickedVal = $('#no').val();
-		   			$('#messages').html('Thank You for playing.');
+		   			$('#messages').html('<p><Thank You for playing.</p><br><p>Have a nice day!</p>');
 		   			// wait a while and restart anyway
 		   			pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 10); 
             	}   
@@ -152,17 +155,21 @@ var playQuiz = {
 		var answerNumber = "";
 		var correctAnswer = "";
 		// if no answer selected (timeout) then set the array id of the answer to -1, valid options are 1 to 4
-		console.log(!gameData.answerSelected);
+		console.log(gameData.answerSelected);
 		console.log(gameData.questionData[gameData.currentQuestion][5]);
-		if (!gameData.answerSelected){
+		if (gameData.answerSelected === false){
 			this.currentUserAnswer  = "-1";
 		}
 		// convert the string to an integer for use as array index
 		answerNumber = parseInt(this.currentUserAnswer);
 		// check if this is the correct answer
+		console.log('value of !gameData.answerSelected ' + !gameData.answerSelected);
+		console.log("current user answer" + this.currentUserAnswer);
+		console.log("store  answer" + gameData.questionData[gameData.currentQuestion][5]);
 		if (this.currentUserAnswer === gameData.questionData[gameData.currentQuestion][5]){
 			$('.modal').show();
-			$('#messages').html("You got the Correct Answer " + gameData.questionData[gameData.currentQuestion][answerNumber]);
+			$('#info-message-title').html('Correct Answer!');
+			$('#messages').html('<p> You correctly answered ' + gameData.questionData[gameData.currentQuestion][answerNumber] + '</p><br><p> Contragulations! </p>');
 			
 			// increment the quiz counters
 			this.userCorrectAnswers++;
@@ -172,7 +179,8 @@ var playQuiz = {
 		else {
 			correctAnswer = gameData.questionData[gameData.currentQuestion][5];
 			$('.modal').show();
-			$('#messages').html("Incorrect Answer. The correct answer is: " + gameData.questionData[gameData.currentQuestion][correctAnswer]);
+			$('#info-message-title').html('Incorrect Answer!');
+			$('#messages').html("<br><p> The correct answer is: </p><br><p> " + gameData.questionData[gameData.currentQuestion][correctAnswer] + '</p>');
 	        this.userIncorrectAnswers++;
 			this.totalQuestionsAsked++;	
 			pauseForMsgDisplay = setTimeout(playQuiz.continueQuiz, 3 * 1000);
@@ -193,8 +201,8 @@ var playQuiz = {
 		else {
 			//display end of game message and scores
 			$('.modal').show();
-		    $('#messages').html('Game Over!');
-			$('#messages').append('You got ' + playQuiz.userCorrectAnswers + ' correct questions out of ' + playQuiz.totalQuestionsAsked + ' total questions.');
+		    $('#info-message-title').html('Score');
+			$('#messages').html('<p> You got ' + playQuiz.userCorrectAnswers + ' questions correct out of ' + playQuiz.totalQuestionsAsked + ' total questions.</p>');
 			//pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 5);  // this should be an OPTION to restart game
 			// clearTimeout(pauseForMsgDisplay);
 			// When the user clicks on <span> (x), close the modal
