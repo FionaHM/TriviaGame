@@ -73,7 +73,11 @@ var gameData = {
 						buttonSelected = true;
 					}
 				});
-			
+				// if ( buttonSelected ){  // dont allow user to click any more options
+				// 	$(':radio,:checkbox').click(function(){
+				// 	    return false;
+				// 	});
+				// }
 		
 			//  reset the interval and start the timer 
 			gameData.timeoutInterval = 20;
@@ -90,10 +94,42 @@ var gameData = {
 
 	   	},
 
+	   	goNoGoDecision: function(){
+	   		$('#messages').html('Would you like to restart the quiz?');
+	   		$('.modal-buttons').show();
+	   		var clickedVal = null;
+		   	$('#yes').on('click', function() {
+		   		if ( clickedVal === null ) {  // don't allow the buttons to be selected more than once
+			   		clickedVal = $('#yes').val();
+			   		console.log(clickedVal);
+			   		// if ($('.modal-buttons').val() === 'yes'){
+			   			gameData.quizReset();
+						// pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 5);
+				} 
+			});
+            $('#no').on('click', function() {
+            	if ( clickedVal === null ) {  // don't allow the buttons to be selected more than once
+            		clickedVal = $('#no').val();
+            	    console.log(clickedVal);
+		   			$('#messages').html('Thank You for playing.');
+		   			// wait a while and restart anyway
+		   			pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 10); 
+            	}   
+		    });
+		    // nothing clicked
+		    if (!clickedVal){
+		    	 console.log(clickedVal);
+		    	//pause a bit and restart anyway
+		    	pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 10); 
+		    }
+	   	},
+
 	   	quizReset: function(){
+
 	   		clearTimeout(pauseForMsgDisplay);
 	   		// set all data to initial state
 	   		$('.modal').hide();
+	   		$('.modal-buttons').hide();
 	   		console.log("in here too");
 	   		gameData.currentQuestion =  0;
 			gameData.answerSelected = false;	
@@ -158,9 +194,23 @@ var playQuiz = {
 			//display end of game message and scores
 			$('.modal').show();
 		    $('#messages').html('Game Over!');
-			$('#messages').html('You got ' + playQuiz.userCorrectAnswers + ' correct questions out of ' + playQuiz.totalQuestionsAsked + ' total questions.');
-			pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 5);  // this should be an OPTION to restart game
+			$('#messages').append('You got ' + playQuiz.userCorrectAnswers + ' correct questions out of ' + playQuiz.totalQuestionsAsked + ' total questions.');
+			//pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 5);  // this should be an OPTION to restart game
 			// clearTimeout(pauseForMsgDisplay);
+			// When the user clicks on <span> (x), close the modal
+			// $('#messages').append('Would you like to restart the game?');
+		 //   	$('#yes').on('click', function() {
+		 //   	    gameData.quizReset;
+			// 	// pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 5); 
+			// 	$('.modal-buttons').hide();
+			// });
+		 //    $('#no').on('click', function() {
+			// 	$('#messages').html('Game Over!');
+			// 	$('#messages').append('Thank You for playing');
+			//     // waits a bit and restarts anyway?
+			// 	pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 5); 
+			// });
+			pauseForMsgDisplay = setTimeout(gameData.goNoGoDecision,  1000 * 3);
 		}
 
 	},
