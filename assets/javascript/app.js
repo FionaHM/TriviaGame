@@ -16,7 +16,6 @@ var gameData = {
 		$('#timer').html('<h2>' + gameData.timeoutInterval + ' seconds </h2>');	
 		// call the countdown function every second
 	    timerInterval = setInterval(this.countDown, 1000);
-	    // console.log("counting down");
 	},
 
 
@@ -38,9 +37,8 @@ var gameData = {
 		   	 	clearInterval(timerInterval);
                 // reset the timer
                 gameData.timeoutInterval = 20;
-                // call function to handle answers and move to next question
+                // // call function to handle answers and move to next question
                 playQuiz.verifyAnswer();
-          
             }
         },
 
@@ -50,6 +48,8 @@ var gameData = {
 			var i = gameData.currentQuestion;  // the array ID of the current questions
 			var j = 1;
 			var buttonSelected = false;
+            $('.hide-initially').show();
+    		$('.show-initially').hide();
 			// clear this options div between questions.
 			$('#options').empty();
 			// displays the current question
@@ -66,6 +66,7 @@ var gameData = {
 			// add the onclick event - I tried adding in the $('document').ready section but the event gets dropped when the page is reset - this way 
 			// it is attached to the radioButtons each time they are generated.
 			// User only gets one chance to answer
+			console.log(buttonSelected);
 				$('.radioButton').on('click', function(){
 					if(!buttonSelected){
 						gameData.selectOption();
@@ -82,6 +83,8 @@ var gameData = {
 			//  reset the interval and start the timer 
 			gameData.timeoutInterval = 20;
 			gameData.startTimer(); 
+
+
 		},
 
 		selectOption: function(){
@@ -101,16 +104,12 @@ var gameData = {
 		   	$('#yes').on('click', function() {
 		   		if ( clickedVal === null ) {  // don't allow the buttons to be selected more than once
 			   		clickedVal = $('#yes').val();
-			   		console.log(clickedVal);
-			   		// if ($('.modal-buttons').val() === 'yes'){
-			   			gameData.quizReset();
-						// pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 5);
+			   		gameData.quizReset();
 				} 
 			});
             $('#no').on('click', function() {
             	if ( clickedVal === null ) {  // don't allow the buttons to be selected more than once
             		clickedVal = $('#no').val();
-            	    console.log(clickedVal);
 		   			$('#messages').html('Thank You for playing.');
 		   			// wait a while and restart anyway
 		   			pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 10); 
@@ -118,7 +117,6 @@ var gameData = {
 		    });
 		    // nothing clicked
 		    if (!clickedVal){
-		    	 console.log(clickedVal);
 		    	//pause a bit and restart anyway
 		    	pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 10); 
 		    }
@@ -130,7 +128,6 @@ var gameData = {
 	   		// set all data to initial state
 	   		$('.modal').hide();
 	   		$('.modal-buttons').hide();
-	   		console.log("in here too");
 	   		gameData.currentQuestion =  0;
 			gameData.answerSelected = false;	
 			playQuiz.questionNumber =  0;
@@ -153,9 +150,12 @@ var playQuiz = {
 
 	verifyAnswer: function(){
 		var answerNumber = "";
+		var correctAnswer = "";
 		// if no answer selected (timeout) then set the array id of the answer to -1, valid options are 1 to 4
+		console.log(!gameData.answerSelected);
+		console.log(gameData.questionData[gameData.currentQuestion][5]);
 		if (!gameData.answerSelected){
-			answerNumber = "-1"
+			this.currentUserAnswer  = "-1";
 		}
 		// convert the string to an integer for use as array index
 		answerNumber = parseInt(this.currentUserAnswer);
@@ -170,9 +170,9 @@ var playQuiz = {
 			pauseForMsgDisplay = setTimeout(playQuiz.continueQuiz, 3 * 1000);
 		} 
 		else {
+			correctAnswer = gameData.questionData[gameData.currentQuestion][5];
 			$('.modal').show();
-			$('#messages').html("Incorrect Answer. The correct answer is: " + gameData.questionData[gameData.currentQuestion][answerNumber]);
-		    // pauseForMsgDisplay = setTimeout(playQuiz.continueQuiz, 3 * 1000);
+			$('#messages').html("Incorrect Answer. The correct answer is: " + gameData.questionData[gameData.currentQuestion][correctAnswer]);
 	        this.userIncorrectAnswers++;
 			this.totalQuestionsAsked++;	
 			pauseForMsgDisplay = setTimeout(playQuiz.continueQuiz, 3 * 1000);
@@ -227,8 +227,10 @@ var playQuiz = {
 }
 
 $('document').ready(function(){
-	// display the first question
-	gameData.displayGameData();
+	// start the game after 5 secs
+	// $('.hide-initially').hide();
+	setTimeout(gameData.displayGameData, 1000 * 3);
+	// gameData.init();
 
 })
 

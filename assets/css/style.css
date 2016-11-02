@@ -1,3 +1,11 @@
+.hide-initially {
+    display: none;
+}
+.wrapper {
+   height:100vh;  /*100% viewport height*/
+   width: 100vw;  /*100% viewport width*/
+   margin: 10 auto;
+}
 .modal {
     display: none; /* Hidden by default */
     position: fixed; 
