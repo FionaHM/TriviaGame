@@ -2,10 +2,24 @@
 var timerInterval;
 var pauseForMsgDisplay;
 var gameData = {
-	questionData: [["question 1 ", "q1 option 1", "q1 option 2", "q1 option 3", "q1 option 4", "1"], 
-	["question 2 ", "q2 option 1", "q2 option 2", "q2 option 3", "q2 option 4", "2"],
-	["question 3 ", "q3 option 1", "q3 option 2", "q3 option 3", "q3 option 4", "3"],
-	["question 4 ", "q4 option 1", "q4 option 2", "q4 option 3", "q4 option 4", "4"]],
+	questionData: [['Question 1: What is \”Bangers and Mash\”?"', 'Sausages and Mashed Potatoes', 'Bacon and Peas','Egg and Chips', 'Fish and Chips', '1'], 
+				['Question 2: What the Japanese food called \”Gyoza\”?', 'Sushi', 'Dumplings', 'Rice Balls', 'Spiced Cabbage', '2'],
+				['Question 3: What is Borscht?', 'Stew', 'Soup', 'Salad', 'Potato Pancakes', '2'],
+				['Question 4: What is the main constituent of the Chinese food \”Porridge\”?', 'Oatmeal', 'Chicken', 'Rice', 'Flour', '3'],
+				['Question 5: Irish Stew is made with which ingredients?', 'Beef, Cabbage, Onion, Potatoes', 'Lamb, Carrots, Potato, Onion', 'Corned Beef, Cabbage, Onion,  Potato', 'Chicken, Carrots,  Peas, Potato', '2'],
+				['Question 6: Moon Cakes are traditional for which annual feast?', 'Christmas', 'Halloween', 'Easter', 'Chinese New Year', '4'],
+				['Question 7: Simnel Cake is traditional for which holiday?', 'Christmas', 'St Patrick\"s Day', 'Easter', 'Chinese New Year', '3'],
+				['Question 8: In which traditional cake would you find a ring?', 'Rosca de Reyes', 'Barmbrack', 'Simnel Cake', 'šakotis (Lithuania Layer Cake)', '2'],
+				['Question 9: What are Mince Pies made of?', 'Beef and onions covered in pastry', 'Fruit based sweet pie covered in pastry', 'Tart apple pie', 'Beef and vegetables covered in pastry', '2'],
+				['Question 10: what is  \”Roti Prata\”?', 'Fish based curry served with rice', 'Chicken curry served with noodles', 'Fried flat bread served with curry', 'Boiled beef and rice wrapped in banana leaf ', '3'],
+				['Question 11: Where does the dish Bibimbap originate?', 'Ukraine', 'Korea', 'Singapore', 'India ', '2'],
+				['Question 12: In what county in Ireland would does the potato pancake called \”Boxty\” originate?', 'Dublin', 'Limerick', 'Galway', 'Donegal', '1']],
+
+
+	// questionData: [["question 1 ", "q1 option 1", "q1 option 2", "q1 option 3", "q1 option 4", "1"], 
+	// ["question 2 ", "q2 option 1", "q2 option 2", "q2 option 3", "q2 option 4", "2"],
+	// ["question 3 ", "q3 option 1", "q3 option 2", "q3 option 3", "q3 option 4", "3"],
+	// ["question 4 ", "q4 option 1", "q4 option 2", "q4 option 3", "q4 option 4", "4"]],
 	currentQuestion:  0,
 	timeoutInterval: 20,
 	answerSelected: false,
