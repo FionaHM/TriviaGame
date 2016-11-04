@@ -1,0 +1,126 @@
+h2, h3{
+      color: white;
+}
+p {
+    line-height: 1;
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 10px;
+    color: white;
+}
+.title, .page-header{
+  background-color: black;
+  color: white;
+}
+.background {
+  background: url("../images/background.png") repeat;
+  min-height: 700px;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 40px;
+}
+.hide-initially {
+    display: none;
+}
+.page-header {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-top: 10px;
+}
+.main-content{
+  background-color: #062949;
+  border-radius: 10%;
+  border-color: black;
+  border-width: 5px;
+  border-style: solid;
+  min-height: 550px;
+  min-width: 250px;
+}
+.show-initially {
+  padding-top: 20%;
+  padding-left: 10%
+  padding-right: 10%;
+}
+.wrapper {
+   height:100vh;  /*100% viewport height*/
+   width: 100vw;  /*100% viewport width*/
+   margin: 10 auto;
+}
+.row{
+    margin: 20px;
+    padding: 10px;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    color: white;
+    z-index: 100;
+}
+.modal-header {
+    position: absolute; 
+    z-index: 100; /* Sit on top */
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 20%;
+    min-height: 75px;
+    background-color: black;
+    border-bottom-width: 1px;
+    border-color: white;
+}
+.modal-body {
+    display: none; /* Hidden by default */
+    position: absolute; 
+    z-index: 100; /* Sit on top */
+    padding-top: 20px; /* Location of the box */
+    padding-left: 10px;
+    padding-right: 10px;
+    top: 35%;
+    height: 30%;
+    min-height: 175px;
+    /*overflow: auto;  Enable scroll if needed */
+    background-color: black;
+}
+.modal-content {
+    display: none; /* Hidden by default */
+    position: absolute; 
+    top: 50%;
+    left: 23%;
+    bottom: 20%;
+    width: 55%;
+    z-index: 100; /* Sit on top */
+    margin-left: 0px;
+    background-color: black;
+    height: 250px;
+    padding-top: 10%;
+    border-width: 2px;
+    border-color: white;
+}
+#timer{
+  color: red;
+}           
+#messages {
+  position: absolute;
+}
+#options {
+  min-width: 50%;
+  text-align: left;
+}
+#yes {
+    display: none; /* Hidden by default */
+    position: absolute;
+    bottom: 40px;
+    left: 33%;
+    z-index: 100;  /*Sit on top */
+    background-color: white;
+    color: black;
+}
+#no {
+    display: none; /* Hidden by default */
+    position: absolute;
+    bottom: 40px;
+    left: 66%;
+    z-index: 100;  /*Sit on top */
+    background-color: white;
+    color: black;
+}
+

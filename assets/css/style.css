@@ -33,8 +33,8 @@ p {
     top: 30%;
     bottom: 20%;
     width: 55%;
-    height: 10%;
-    min-height: 70px;
+    height: 15%;
+    min-height: 100px;
     /*height: 30%; *//* Full height */
     /*overflow: auto;  Enable scroll if needed */
     /*background-color: rgb(0,2,0); /* Fallback color */
@@ -50,7 +50,7 @@ p {
     padding-left: 10px;
     padding-right: 10px;
     left: 23%;
-    top: 40%;
+    top: 48%;
     bottom: 20%;
     width: 55%;
     height: 20%;
@@ -91,3 +91,57 @@ p {
     background-color: white;
     color: black;
 }
+
+/*animation*/
+.clock {
+  border-radius: 50%;
+  background: #ffffff url(assets/images/clock3.png) no-repeat center;
+  z-index: 1100;
+/*  background-size: 88%;*/
+  height: 20em;
+  padding-bottom: 31%;
+  position: relative;
+  width: 20em;
+}
+.clock.simple:after {
+  background: #000;
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 5%;
+  height: 5%;
+  z-index: 101;
+}
+
+.seconds-container {
+  animation: rotate 20s infinite steps(20);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100px;
+}
+
+
+@keyframes rotate {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.seconds {
+   background: #ffffff url(assets/images/clock3.png) no-repeat center;
+  background: #000;
+  height: 20%;
+  left: 49.5%;
+  position: absolute;
+  top: 30%;
+  transform-origin: 50% 80%;
+  width: 1%;
+  z-index: 101;
+}
+

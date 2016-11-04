@@ -3,76 +3,65 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>Trivia Game</title>
+    <title>Trivia Quiz</title>
     <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<!-- <link type="text/css" rel="stylesheet" href="assets/css/reset.css"> -->
-	<link type="text/css" rel="stylesheet" href="assets/css/style.css">
+	<link type="text/css" rel="stylesheet" href="assets/css/stylenew.css">
 
 </head>
 <body>
 <script type="text/javascript" src="assets/javascript/app.js"></script>
 <div class="wrapper">
 	<div class="page-header text-center">
-		<h1> XXX  Trivia Game </h1>
+		    <h1 class="title"> Fun Food Trivia Quiz </h1>
 	</div>
+	<div class="background">
+		<div class="main-content">
+			<div class="show-initially text-center">
+			<h3>Welcome to this International Food Trivia Quiz.</h3>
+			<h3>There are 12 timed questions - you need to be quick to win!</h3>
+			<h3>Good Luck!</h3>
+			</div>
+			<div class="hide-initially"></div>
+			<!-- new row -->
+			<div class="row">
+				<div class="col-md-12 text-center hide-initially">	
+					<h2>Time Remaining <div id="timer" class="hide-initially">20 seconds</div></h2>		
+					
+				</div>
+			</div>
+			<!-- new row -->
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<div id="question" class="hide-initially"></div>
+				</div>
+			</div>
+			<!-- new row -->
+			<div class="row">
+				<!-- <div class="col-md-4 text-center"></div> -->
+				<div class="col-xs-12 col-md-12 text-center">
+					<div id="options" class="hide-initially"></div>
+				</div>	
+				<!-- <div class="col-md-2 text-center"></div> -->
+			</div>
+			<!-- Modal content -->
+			<div class="modal modal-content">
+			<!-- modal header -->
+			  <div class="modal text-center modal-header">
+			       <h3 id="info-message-title">User Information</h3>
+			  </div>
+			  <!-- modal body -->
+			  <div class="modal modal-body">
+			    <p class="modal text-center" id="messages"></p>
+			    <button class="modal-buttons" id="yes" value="yes">YES</button>  <button class="modal-buttons" id="no" value="no">NO</button>
+			  </div>
 
-	<div class="show-initially text-center">
-	Write a bit about the game....
-		
-	</div>
-
-	
-	<div class="hide-initially"></div>
-	<div class="row">
-		<div class="col-md-12 text-center"">
-			<div id="timer" class="hide-initially"><h2>20 seconds</h2></div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12 text-center">
-			<div id="question" class="hide-initially"></div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-4"></div>
-		<div class="col-md-4 text-center"">
-			<div id="options" class="hide-initially"></div>
-		</div>
-		<div class="col-md-4"></div>	
-	</div>
-
-<!-- 
-		<div class="modal">
-			<div id="messages" class="modal"></div>
-		</div> -->
-
-	<!-- Modal content -->
-	<div class="modal">
-	  <div class="modal text-center modal-header">
-	       <h3 id="info-message-title">User Information</h3>
-	  </div>
-	  <div class="modal modal-body">
-	    <p class="modal modal-content text-center" id="messages"></p>
-	    <button class="modal-buttons" id="yes" value="yes">YES</button>  <button class="modal-buttons" id="no" value="no">NO</button>
-	  </div>
-
-	</div>
-
-
-
-
-
-
-
-
-
- </div>
-
-
-
-
+			</div>
+		</div><!--  end of main content div	 -->
+    </div>  <!-- end of background div -->
+ </div> <!--  end of wrapper div -->
 
 </body>
 </html>

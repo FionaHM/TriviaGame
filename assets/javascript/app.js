@@ -2,29 +2,26 @@
 var timerInterval;
 var pauseForMsgDisplay;
 var gameData = {
-	questionData: [['Question 1: What is \”Bangers and Mash\”?"', 'Sausages and Mashed Potatoes', 'Bacon and Peas','Egg and Chips', 'Fish and Chips', '1'], 
-				['Question 2: What the Japanese food called \”Gyoza\”?', 'Sushi', 'Dumplings', 'Rice Balls', 'Spiced Cabbage', '2'],
+	questionData: [['Question 1: What are \"Bangers and Mash\"?', 'Sausages and Mashed Potatoes', 'Bacon and Peas','Egg and Chips', 'Fish and Chips', '1'], 
+				['Question 2: What is the Japanese food called \"Gyoza\"?', 'Sushi', 'Dumplings', 'Rice Balls', 'Spiced Cabbage', '2'],
 				['Question 3: What is Borscht?', 'Stew', 'Soup', 'Salad', 'Potato Pancakes', '2'],
-				['Question 4: What is the main constituent of the Chinese food \”Porridge\”?', 'Oatmeal', 'Chicken', 'Rice', 'Flour', '3'],
+				['Question 4: What is the main constituent of the Chinese food \"Porridge\"?', 'Oatmeal', 'Chicken', 'Rice', 'Flour', '3'],
 				['Question 5: Irish Stew is made with which ingredients?', 'Beef, Cabbage, Onion, Potatoes', 'Lamb, Carrots, Potato, Onion', 'Corned Beef, Cabbage, Onion,  Potato', 'Chicken, Carrots,  Peas, Potato', '2'],
 				['Question 6: Moon Cakes are traditional for which annual feast?', 'Christmas', 'Halloween', 'Easter', 'Chinese New Year', '4'],
-				['Question 7: Simnel Cake is traditional for which holiday?', 'Christmas', 'St Patrick\"s Day', 'Easter', 'Chinese New Year', '3'],
-				['Question 8: In which traditional cake would you find a ring?', 'Rosca de Reyes', 'Barmbrack', 'Simnel Cake', 'šakotis (Lithuania Layer Cake)', '2'],
+				['Question 7: Simnel Cake is traditional for which holiday?', 'Christmas', 'St Patrick\'s Day', 'Easter', 'Chinese New Year', '3'],
+				['Question 8: In which holiday cake would you find a gold ring?', 'Rosca de Reyes', 'Barmbrack', 'Simnel Cake', 'šakotis (Lithuania Layer Cake)', '2'],
 				['Question 9: What are Mince Pies made of?', 'Beef and onions covered in pastry', 'Fruit based sweet pie covered in pastry', 'Tart apple pie', 'Beef and vegetables covered in pastry', '2'],
-				['Question 10: what is  \”Roti Prata\”?', 'Fish based curry served with rice', 'Chicken curry served with noodles', 'Fried flat bread served with curry', 'Boiled beef and rice wrapped in banana leaf ', '3'],
+				['Question 10: what is  \"Roti Prata\"?', 'Fish based curry served with rice', 'Chicken curry served with noodles', 'Fried flat bread served with curry sauce', 'Beef and rice wrapped in banana leaf ', '3'],
 				['Question 11: Where does the dish Bibimbap originate?', 'Ukraine', 'Korea', 'Singapore', 'India ', '2'],
-				['Question 12: In what county in Ireland would does the potato pancake called \”Boxty\” originate?', 'Dublin', 'Limerick', 'Galway', 'Donegal', '1']],
-
-
-	// questionData: [["question 1 ", "q1 option 1", "q1 option 2", "q1 option 3", "q1 option 4", "1"], 
-	// ["question 2 ", "q2 option 1", "q2 option 2", "q2 option 3", "q2 option 4", "2"],
-	// ["question 3 ", "q3 option 1", "q3 option 2", "q3 option 3", "q3 option 4", "3"],
-	// ["question 4 ", "q4 option 1", "q4 option 2", "q4 option 3", "q4 option 4", "4"]],
+				['Question 12: In which county in Ireland does the potato pancake called \"Boxty\" originate?', 'Dublin', 'Limerick', 'Galway', 'Donegal', '1']],
 	currentQuestion:  0,
 	timeoutInterval: 20,
 	answerSelected: false,
+
 	
-	// pass in the current question number to display the correct timer data to the user.
+
+
+
 	startTimer: function(){
 	    //display initial time
 		$('#timer').html('<h2>' + gameData.timeoutInterval + ' seconds </h2>');	
@@ -32,30 +29,29 @@ var gameData = {
 	    timerInterval = setInterval(this.countDown, 1000);
 	},
 
-
-        // The decremeent function.
+    // The decremeent function.
     countDown: function(){
-            // Decrease number by one second.
-           	// in this function  the value of 'this' is the window object, so must explicity state object.function or object.variable instead of this.function or this.variable
- 			// I guess this is because this function is being called by the setInterval and this is a method of the window object.
+        // Decrease number by one second.
+       	// in this function  the value of 'this' is the window object, so must explicity state object.function or object.variable instead of this.function or this.variable
+		// I guess this is because this function is being called by the setInterval and this is a method of the window object.
 
-             gameData.timeoutInterval--;
-            // Show the number in the #timer tag.
-            $('#timer').html('<h2>' + gameData.timeoutInterval + ' seconds </h2>');
-       
+         gameData.timeoutInterval--;
+        // Show the number in the #timer tag.
+        $('#timer').html('<h2>' + gameData.timeoutInterval + ' seconds </h2>');
 
-            // Once number hits zero...
-            if (gameData.timeoutInterval === 0){
+        // Once number hits zero...
+        if (gameData.timeoutInterval === 0){
 
-               //stop the timer  
-		   	 	clearInterval(timerInterval);
-                // reset the timer
-                gameData.timeoutInterval = 20;
-                // // call function to handle answers and move to next question
-                playQuiz.verifyAnswer();
-            }
-        },
+           //stop the timer  
+	   	 	clearInterval(timerInterval);
+            // reset the timer
+            gameData.timeoutInterval = 20;
+            // // call function to handle answers and move to next question
+            playQuiz.verifyAnswer();
+        }
+    },
 
+    // pass in the current question number to display the correct timer data to the user
 	displayGameData: function(){
 			// cannot use 'this' here either as it otherwise it fails when it is being called by setTimeout method
 			// console.log(this);
@@ -63,6 +59,7 @@ var gameData = {
 			var j = 1;
 			var buttonSelected = false;
 			gameData.answerSelected = false;
+			// playQuiz.gameOver = false;
             $('.hide-initially').show();
     		$('.show-initially').hide();
 			// clear this options div between questions.
@@ -81,7 +78,7 @@ var gameData = {
 			// add the onclick event - I tried adding in the $('document').ready section but the event gets dropped when the page is reset - this way 
 			// it is attached to the radioButtons each time they are generated.
 			// User only gets one chance to answer
-			console.log(buttonSelected);
+			// console.log(buttonSelected);
 				$('.radioButton').on('click', function(){
 					if(!buttonSelected){
 					
@@ -90,12 +87,7 @@ var gameData = {
 					    gameData.selectOption();
 					}
 				});
-				// if ( buttonSelected ){  // dont allow user to click any more options
-				// 	$(':radio,:checkbox').click(function(){
-				// 	    return false;
-				// 	});
-				// }
-		
+
 			//  reset the interval and start the timer 
 			gameData.timeoutInterval = 20;
 			gameData.startTimer(); 
@@ -121,6 +113,7 @@ var gameData = {
 		   	$('#yes').on('click', function() {
 		   		if ( clickedVal === null ) {  // don't allow the buttons to be selected more than once
 			   		clickedVal = $('#yes').val();
+			   		playQuiz.gameOver = false;
 			   		gameData.quizReset();
 				} 
 			});
@@ -129,13 +122,17 @@ var gameData = {
             		clickedVal = $('#no').val();
 		   			$('#messages').html('<p><Thank You for playing.</p><br><p>Have a nice day!</p>');
 		   			// wait a while and restart anyway
-		   			pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 10); 
+		   			playQuiz.gameOver = true;
+		   			console.log(playQuiz.gameOver, "value in no function");
+		   			pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 5); 
+
             	}   
 		    });
 		    // nothing clicked
 		    if (!clickedVal){
 		    	//pause a bit and restart anyway
-		    	pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 10); 
+		    	playQuiz.gameOver = true;
+		    	pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 5); 
 		    }
 	   	},
 
@@ -152,8 +149,21 @@ var gameData = {
 			playQuiz.userCorrectAnswers =  0;
 			playQuiz.userIncorrectAnswers =  0;
 			playQuiz.totalQuestionsAsked =  0;
-			// reload the game
-			gameData.displayGameData();
+            console.log( playQuiz.gameOver , 'value in reset function')
+			if ( playQuiz.gameOver === false ){
+	   			// reload the game
+				gameData.displayGameData();
+
+	   		} 
+	   		else {
+	   			$('.show-initially').show();
+	   			$('.hide-initially').hide();
+	   			// reset flag to false.
+	   			playQuiz.gameOver = false;
+	   		    setTimeout(gameData.displayGameData, 1000 * 8);	
+
+	   		}
+			
 	   	}
 
 }; // end object
@@ -164,37 +174,45 @@ var playQuiz = {
 	userCorrectAnswers: 0,
 	userIncorrectAnswers: 0,
 	totalQuestionsAsked: 0,
+	gameOver: false,
+
 
 	verifyAnswer: function(){
 		var answerNumber = "";
 		var correctAnswer = "";
 		// if no answer selected (timeout) then set the array id of the answer to -1, valid options are 1 to 4
-		console.log(gameData.answerSelected);
-		console.log(gameData.questionData[gameData.currentQuestion][5]);
+		
 		if (gameData.answerSelected === false){
 			this.currentUserAnswer  = "-1";
 		}
 		// convert the string to an integer for use as array index
 		answerNumber = parseInt(this.currentUserAnswer);
+		correctAnswer = gameData.questionData[gameData.currentQuestion][5];
 		// check if this is the correct answer
-		console.log('value of !gameData.answerSelected ' + !gameData.answerSelected);
-		console.log("current user answer" + this.currentUserAnswer);
-		console.log("store  answer" + gameData.questionData[gameData.currentQuestion][5]);
-		if (this.currentUserAnswer === gameData.questionData[gameData.currentQuestion][5]){
+		if (this.currentUserAnswer === correctAnswer ){
 			$('.modal').show();
 			$('#info-message-title').html('Correct Answer!');
-			$('#messages').html('<p> You correctly answered ' + gameData.questionData[gameData.currentQuestion][answerNumber] + '</p><br><p> Contragulations! </p>');
+			$('#messages').html('<p> You correctly answered ' + gameData.questionData[gameData.currentQuestion][answerNumber] + '</p><br><p> Congratulations! </p>');
 			
 			// increment the quiz counters
 			this.userCorrectAnswers++;
 			this.totalQuestionsAsked++;
 			pauseForMsgDisplay = setTimeout(playQuiz.continueQuiz, 3 * 1000);
 		} 
-		else {
-			correctAnswer = gameData.questionData[gameData.currentQuestion][5];
+		else if (answerNumber > 0) {
+			
 			$('.modal').show();
 			$('#info-message-title').html('Incorrect Answer!');
 			$('#messages').html("<br><p> The correct answer is: </p><br><p> " + gameData.questionData[gameData.currentQuestion][correctAnswer] + '</p>');
+	        this.userIncorrectAnswers++;
+			this.totalQuestionsAsked++;	
+			pauseForMsgDisplay = setTimeout(playQuiz.continueQuiz, 3 * 1000);
+		}
+		else  {
+			$('.modal').show();
+			$('#info-message-title').html('No Answer Provided!');
+			$('#messages').html('<br><p> Please select an option before time runs out.</p><br>');
+			$('#messages').append('<br><p> The correct answer is: </p><br><p>' + gameData.questionData[gameData.currentQuestion][correctAnswer] + '</p>');
 	        this.userIncorrectAnswers++;
 			this.totalQuestionsAsked++;	
 			pauseForMsgDisplay = setTimeout(playQuiz.continueQuiz, 3 * 1000);
@@ -214,45 +232,24 @@ var playQuiz = {
 		}
 		else {
 			//display end of game message and scores
+
 			$('.modal').show();
 		    $('#info-message-title').html('Score');
 			$('#messages').html('<p> You got ' + playQuiz.userCorrectAnswers + ' questions correct out of ' + playQuiz.totalQuestionsAsked + ' total questions.</p>');
-			//pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 5);  // this should be an OPTION to restart game
-			// clearTimeout(pauseForMsgDisplay);
-			// When the user clicks on <span> (x), close the modal
-			// $('#messages').append('Would you like to restart the game?');
-		 //   	$('#yes').on('click', function() {
-		 //   	    gameData.quizReset;
-			// 	// pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 5); 
-			// 	$('.modal-buttons').hide();
-			// });
-		 //    $('#no').on('click', function() {
-			// 	$('#messages').html('Game Over!');
-			// 	$('#messages').append('Thank You for playing');
-			//     // waits a bit and restarts anyway?
-			// 	pauseForMsgDisplay = setTimeout(gameData.quizReset,  1000 * 5); 
-			// });
+			if ( playQuiz.userCorrectAnswers === playQuiz.totalQuestionsAsked ){
+				$('#messages').append('<p> You got all the questions correct! Wow - great job! </p>');	
+			}
 			pauseForMsgDisplay = setTimeout(gameData.goNoGoDecision,  1000 * 3);
 		}
 
-	},
-		
-
-	hideMsg: function(){
-		// this function is required to be called by setTimeout function as it expects a function as the first argument.
-		$('.modal').hide();
-		// clearTimeout(pauseForMsgDisplay);
-
 	}
-
 
 }
 
 $('document').ready(function(){
-	// start the game after 5 secs
-	// $('.hide-initially').hide();
-	setTimeout(gameData.displayGameData, 1000 * 3);
-	// gameData.init();
+	// start the game 
+
+	setTimeout(gameData.displayGameData, 1000 * 8);
 
 })
 
