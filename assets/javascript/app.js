@@ -156,11 +156,14 @@ var gameData = {
 
 	   		} 
 	   		else {
-	   			$('.show-initially').show();
-	   			$('.hide-initially').hide();
-	   			$('.modal-buttons').hide();
+	   			// $('.show-initially').show();
+	   			// $('.hide-initially').hide();
+	   			// $('.modal-buttons').hide();
 	   			// reset flag to false.
-	   			playQuiz.gameOver = false;
+	   			$('.modal').show();
+				// $('#info-message-title').html('<p>No Answer Provided!</p>');
+				$('#messages').html('<h1> GAME OVER! GOODBYE!</h1>');
+		   		playQuiz.gameOver = false;
 	   			// End the game 
 	   			// setTimeout(gameData.displayGameData, 1000 * 8);	
 
@@ -237,9 +240,9 @@ var playQuiz = {
 
 			$('.modal').show();
 		    $('#info-message-title').html('Score');
-			$('#messages').html('<p> You got ' + playQuiz.userCorrectAnswers + ' questions correct out of ' + playQuiz.totalQuestionsAsked + ' total questions.</p>');
+			$('#messages').html('<p> You got ' + playQuiz.userCorrectAnswers + ' questions correct out of ' + playQuiz.totalQuestionsAsked + ' total questions.</p><br>');
 			if ( playQuiz.userCorrectAnswers === playQuiz.totalQuestionsAsked ){
-				$('#messages').append('<p> You got all the questions correct! Wow - great job! </p>');	
+				$('#messages').append('<p> You got all the questions correct! <br> Wow - great job! </p>');	
 			}
 			pauseForMsgDisplay = setTimeout(gameData.goNoGoDecision,  1000 * 3);
 		}
