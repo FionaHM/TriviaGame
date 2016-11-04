@@ -158,9 +158,11 @@ var gameData = {
 	   		else {
 	   			$('.show-initially').show();
 	   			$('.hide-initially').hide();
+	   			$('.modal-buttons').hide();
 	   			// reset flag to false.
 	   			playQuiz.gameOver = false;
-	   		    setTimeout(gameData.displayGameData, 1000 * 8);	
+	   			// End the game 
+	   			// setTimeout(gameData.displayGameData, 1000 * 8);	
 
 	   		}
 			
@@ -191,7 +193,7 @@ var playQuiz = {
 		// check if this is the correct answer
 		if (this.currentUserAnswer === correctAnswer ){
 			$('.modal').show();
-			$('#info-message-title').html('Correct Answer!');
+			$('#info-message-title').html('<p>Correct Answer!</p>');
 			$('#messages').html('<p> You correctly answered ' + gameData.questionData[gameData.currentQuestion][answerNumber] + '</p><br><p> Congratulations! </p>');
 			
 			// increment the quiz counters
@@ -202,7 +204,7 @@ var playQuiz = {
 		else if (answerNumber > 0) {
 			
 			$('.modal').show();
-			$('#info-message-title').html('Incorrect Answer!');
+			$('#info-message-title').html('<p>Incorrect Answer!</p>');
 			$('#messages').html("<br><p> The correct answer is: </p><br><p> " + gameData.questionData[gameData.currentQuestion][correctAnswer] + '</p>');
 	        this.userIncorrectAnswers++;
 			this.totalQuestionsAsked++;	
@@ -210,7 +212,7 @@ var playQuiz = {
 		}
 		else  {
 			$('.modal').show();
-			$('#info-message-title').html('No Answer Provided!');
+			$('#info-message-title').html('<p>No Answer Provided!</p>');
 			$('#messages').html('<br><p> Please select an option before time runs out.</p><br>');
 			$('#messages').append('<br><p> The correct answer is: </p><br><p>' + gameData.questionData[gameData.currentQuestion][correctAnswer] + '</p>');
 	        this.userIncorrectAnswers++;

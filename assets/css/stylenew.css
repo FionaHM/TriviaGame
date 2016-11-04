@@ -1,12 +1,15 @@
-h2, h3{
+h2, h3, h4{
       color: white;
 }
 p {
     line-height: 1;
-    display: inline-block;
-    margin-left: 20px;
+    display: inline;
     margin-top: 10px;
+    margin-left: 20px;
     color: white;
+}
+.center-radio-btns{
+  margin-left: 20%;
 }
 .title, .page-header{
   background-color: black;
@@ -62,7 +65,7 @@ p {
     padding-left: 10px;
     padding-right: 10px;
     height: 20%;
-    min-height: 75px;
+    min-height: 85px;
     background-color: black;
     border-bottom-width: 1px;
     border-color: white;
@@ -96,13 +99,19 @@ p {
     border-color: white;
 }
 #timer{
-  color: red;
-}           
+  color: black;
+}         
+#timer-div {
+  color: black;
+  background-color: lightblue;
+  border-radius: 10%;
+
+}  
 #messages {
   position: absolute;
 }
 #options {
-  min-width: 50%;
+  /*min-width: 50%;*/
   text-align: left;
 }
 #yes {
@@ -123,4 +132,36 @@ p {
     background-color: white;
     color: black;
 }
+
+@media only screen (min-width: 1200px) {
+
+        .center-radio-btns{
+              margin-left: 20%;
+            }
+
+ }
+ @media only screen and (min-width: 641px) and (max-width: 768px) {
+
+        .center-radio-btns{
+              margin-left: 5%;
+        }
+
+}
+ /* extra small devices have px sz below 640px */
+@media only screen and (max-width: 640px) {
+
+        .center-radio-btns{
+              margin-left: 10%;
+        }
+
+        .modal-header {
+          min-height: 90px;
+        }
+
+         .modal-body {
+          top: 55%;
+        }
+
+}
+
 

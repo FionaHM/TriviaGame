@@ -20,13 +20,20 @@
 	<div class="background">
 		<div class="main-content">
 			<div class="show-initially text-center">
-			<h3>Welcome to this International Food Trivia Quiz.</h3>
-			<h3>There are 12 timed questions - you need to be quick to win!</h3>
-			<h3>Good Luck!</h3>
+				<div class="row">
+				      <<!-- div class="col-lg-4 text-center show-initially"></div> -->
+					 <!-- <div class="col-md-12 text-center show-initially">	 -->
+						<h4>Welcome to this International Food Trivia Quiz.</h4><br>
+						<h4>There are 12 timed questions - you need to be quick to win!</h4><br>
+						<h4>Good Luck!</h4><br>
+					 <!-- </div> -->
+					<!--   <div class="col-lg-4 text-center show-initially"></div> -->
+				</div>
 			</div>
 			<div class="hide-initially"></div>
 			<!-- new row -->
-			<div class="row">
+			<div class="row hide-initially" id="timer-div">
+				
 				<div class="col-md-12 text-center hide-initially">	
 					<h2>Time Remaining <div id="timer" class="hide-initially">20 seconds</div></h2>		
 					
@@ -34,14 +41,14 @@
 			</div>
 			<!-- new row -->
 			<div class="row">
-				<div class="col-md-12 text-center">
+				<div class="col-xs-12 col-md-12 text-center">
 					<div id="question" class="hide-initially"></div>
 				</div>
 			</div>
 			<!-- new row -->
 			<div class="row">
 				<!-- <div class="col-md-4 text-center"></div> -->
-				<div class="col-xs-12 col-md-12 text-center">
+				<div class="col-xs-12 col-md-12 text-center center-radio-btns">
 					<div id="options" class="hide-initially"></div>
 				</div>	
 				<!-- <div class="col-md-2 text-center"></div> -->
